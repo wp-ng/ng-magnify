@@ -1,6 +1,8 @@
 ng-magnify
 ==========
 
+[Demo]https://redcastor.github.io/ng-magnify/examples/
+
 AngularJS directive for simple image magnification
 
 
