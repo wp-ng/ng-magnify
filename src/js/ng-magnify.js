@@ -50,6 +50,10 @@
               opacity: 0,
               filter: 'alpha(opacity=0)'
             });
+            
+            //Reset image for prevent binding change image source not same size.
+            nWidth = undefined;
+            nHeight = undefined;
           });
         });
 
