@@ -12,14 +12,13 @@
     position: relative;
     padding-top: 50px;
   }
-  #example2,
-  #example3,
-  #example4 {
-    width: 200px;
+  #example1 {
+    width: 100;
+    height: auto;
   }
-  #example2 .magnify-glass {
-    width: 300px;
-    height: 300px;
+  #example1 .magnify-glass {
+    width: 200px;
+    height: 200px;
   }
   </style>
 </head>
@@ -38,30 +37,13 @@
     </div>
   </header>
   <div class="container-fluid">
+    <br>
     <div class="row">
-      <div class="col-md-12">Examples</div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-5">
+      <div class="col-xs-12 col-md-6 col-md-offset-6">
         <div data-ng-controller="ExampleCtrl">
-          <div id="example1" data-ng-magnify
-            data-image-width="200"
-            data-image-height="300"
-            data-glass-width="400"
-            data-glass-height="400"
-            data-image-src="img/nexus5.jpg"
+          <div id="example1" data-ng-magnify data-image-src="img/nexus5.jpg"
           ></div>
         </div>
-      </div>
-      <div class="col-md-5">
-        <div id="example2" data-ng-magnify image-src="img/nexus5.jpg"></div>
-      </div>
-      <div class="col-md-4">
-        <div id="example3" data-ng-magnify image-src="img/nexus5.jpg"></div>
-      </div>
-      <div class="col-md-4">
-        <div id="example4" data-ng-magnify image-src="img/nexus5.jpg"></div>
       </div>
     </div>
 
