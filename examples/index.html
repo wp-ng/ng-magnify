@@ -18,8 +18,8 @@
     width: 200px;
   }
   #example2 .magnify-glass {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: auto;
   }
   </style>
 </head>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-3">
         <div data-ng-controller="ExampleCtrl">
           <div id="example1" data-ng-magnify
             data-image-width="200"
@@ -54,13 +54,13 @@
           ></div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-3">
         <div id="example2" data-ng-magnify image-src="img/nexus5.jpg"></div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-3">
         <div id="example3" data-ng-magnify image-src="img/nexus5.jpg"></div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-3">
         <div id="example4" data-ng-magnify image-src="img/nexus5.jpg"></div>
       </div>
     </div>
