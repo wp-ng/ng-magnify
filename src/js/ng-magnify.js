@@ -5,7 +5,7 @@
 
   var magnify = angular.module('ngMagnify', []);
 
-  magnify.directive('ngMagnify', function () {
+  magnify.directive('ngMagnify', [ function () {
     return {
       restrict: 'EA',
       replace: true,
@@ -44,17 +44,15 @@
             glass.css( magnifyCSS );
           }
         })
-        .on('mouseout', function () {
-          glass.on('mouseleave', function () {
-            glass.css({
-              opacity: 0,
-              filter: 'alpha(opacity=0)'
-            });
-            
-            //Reset image for prevent binding change image source not same size.
-            nWidth = undefined;
-            nHeight = undefined;
+        .on('mouseleave', function () {
+          glass.css({
+            opacity: 0,
+            filter: 'alpha(opacity=0)'
           });
+
+          //Reset image for prevent binding change image source not same size.
+          nWidth = undefined;
+          nHeight = undefined;
         });
 
         scope.magnify = function (evt) {
@@ -123,5 +121,5 @@
         };
       }
     };
-  });
+  }]);
 })();
