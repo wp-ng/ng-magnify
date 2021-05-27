@@ -11,13 +11,15 @@
       replace: true,
       template: '<div class="magnify-container" ng-style="getContainerStyle()">' +
                   '<div class="magnify-glass" ng-style="getGlassStyle()"></div>' +
-                  '<img class="magnify-image" width="{{imageWidth}}" height="{{imageHeight}}" ng-src="{{ imageSrc }}" ng-srcset="{{ imageSrcset }}" alt="{{ imageAlt }}" title="{{ imageTitle }}"/>' +
+                  '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{ src }}" ng-srcset="{{ srcset }}" alt="{{ alt }}" title="{{ title }}"/>' +
                 '</div>',
       scope: {
-        imageSrc: '@',
-        imageSrcset: '@',
-        imageAlt: '@',
-        imageTitle: '@',
+        src: '@',
+        srcset: '@',
+        alt: '@',
+        title: '@',
+        width: '=',
+        height: '=',
         imageWidth: '=',
         imageHeight: '=',
         glassWidth: '=',
