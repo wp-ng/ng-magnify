@@ -14,8 +14,8 @@
                   '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{ src }}" ng-srcset="{{ srcset }}" alt="{{ alt }}" title="{{ title }}"/>' +
                 '</div>',
       scope: {
-        src: '@',
-        srcset: '@',
+        ngSrc: '@',
+        ngSrcset: '@',
         alt: '@',
         title: '@',
         width: '=',
