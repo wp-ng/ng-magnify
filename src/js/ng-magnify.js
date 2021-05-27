@@ -9,12 +9,15 @@
     return {
       restrict: 'EA',
       replace: true,
-      template: '<div class="magnify-container" data-ng-style="getContainerStyle()">' +
-                  '<div class="magnify-glass" data-ng-style="getGlassStyle()"></div>' +
-                  '<img class="magnify-image" data-ng-src="{{ imageSrc }}"/>' +
+      template: '<div class="magnify-container" ng-style="getContainerStyle()">' +
+                  '<div class="magnify-glass" ng-style="getGlassStyle()"></div>' +
+                  '<img class="magnify-image" width="{{imageWidth}}" height="{{imageHeight}}" ng-src="{{ imageSrc }}" ng-srcset="{{ imageSrcset }}" alt="{{ imageAlt }}" title="{{ imageTitle }}"/>' +
                 '</div>',
       scope: {
         imageSrc: '@',
+        imageSrcset: '@',
+        imageAlt: '@',
+        imageTitle: '@',
         imageWidth: '=',
         imageHeight: '=',
         glassWidth: '=',
