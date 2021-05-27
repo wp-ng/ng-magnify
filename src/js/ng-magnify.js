@@ -9,12 +9,17 @@
     return {
       restrict: 'EA',
       replace: true,
-      template: '<div class="magnify-container" data-ng-style="getContainerStyle()">' +
-                  '<div class="magnify-glass" data-ng-style="getGlassStyle()"></div>' +
-                  '<img class="magnify-image" data-ng-src="{{ imageSrc }}"/>' +
+      template: '<div class="magnify-container" ng-style="getContainerStyle()">' +
+                  '<div class="magnify-glass" ng-style="getGlassStyle()"></div>' +
+                  '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{ src }}" ng-srcset="{{ srcset }}" alt="{{ alt }}" title="{{ title }}"/>' +
                 '</div>',
       scope: {
-        imageSrc: '@',
+        src: '@',
+        srcset: '@',
+        alt: '@',
+        title: '@',
+        width: '=',
+        height: '=',
         imageWidth: '=',
         imageHeight: '=',
         glassWidth: '=',
@@ -64,7 +69,7 @@
               nWidth = img.width;
               nHeight = img.height;
             };
-            img.src = scope.imageSrc;
+            img.src = scope.src;
           } else {
             // IE8 uses evt.x and evt.y
             mx = (evt.pageX) ? (evt.pageX - el.left) : evt.x;
@@ -114,7 +119,7 @@
 
         scope.getGlassStyle = function () {
           return {
-            background: 'url("' + scope.imageSrc + '") no-repeat',
+            background: 'url("' + scope.src + '") no-repeat',
             width: (scope.glassWidth) ? scope.glassWidth + 'px' : '',
             height: (scope.glassHeight) ? scope.glassHeight + 'px' : ''
           };
