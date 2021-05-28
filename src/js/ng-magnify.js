@@ -10,12 +10,15 @@
       restrict: 'EA',
       replace: true,
       template: '<div class="magnify-container" ng-style="getContainerStyle()">' +
-                  '<div class="magnify-glass" ng-style="getGlassStyle()"></div>' +
-                  '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{ imageSrc }}" ng-srcset="{{ srcset }}" alt="{{ alt }}" title="{{ title }}"/>' +
-                '</div>',
+        '<div class="magnify-glass" ng-style="getGlassStyle()"></div>' +
+        '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{imageSrc || src}}" ng-srcset="{{imageSrcset || srcset}}" sizes="{{sizes}}" alt="{{alt}}" title="{{title}}"/>' +
+        '</div>',
       scope: {
         imageSrc: '@',
+        imageSrcset: '@',
+        src: '@',
         srcset: '@',
+        sizes: '@',
         alt: '@',
         title: '@',
         width: '=',
@@ -25,9 +28,7 @@
         glassWidth: '=',
         glassHeight: '='
       },
-      link: function (scope, element, attrs) {
-
-        scope.imageSrc = scope.imageSrc || attrs.src || attrs.ngSrc;
+      link: function (scope, element) {
 
         var glass = element.find('div'),
           image = element.find('img'),
@@ -52,16 +53,16 @@
             glass.css( magnifyCSS );
           }
         })
-        .on('mouseleave', function () {
-          glass.css({
-            opacity: 0,
-            filter: 'alpha(opacity=0)'
-          });
+          .on('mouseleave', function () {
+            glass.css({
+              opacity: 0,
+              filter: 'alpha(opacity=0)'
+            });
 
-          //Reset image for prevent binding change image source not same size.
-          nWidth = undefined;
-          nHeight = undefined;
-        });
+            //Reset image for prevent binding change image source not same size.
+            nWidth = undefined;
+            nHeight = undefined;
+          });
 
         scope.magnify = function (evt) {
           var mx, my, rx, ry, px, py, bgp, img;
