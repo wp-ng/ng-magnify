@@ -11,7 +11,7 @@
       replace: true,
       template: '<div class="magnify-container" ng-style="getContainerStyle()">' +
         '<div class="magnify-glass" ng-style="getGlassStyle()"></div>' +
-        '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{imageSrc || src}}" ng-srcset="{{imageSrcset || srcset}}" sizes="{{sizes}}" alt="{{alt}}" title="{{title}}"/>' +
+        '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{imageSrc}}" ng-srcset="{{(imageSrcset === \'\' || imageSrcset === \'true\' ? srcset : imageSrcset)}}" sizes="{{sizes}}" alt="{{alt}}" title="{{title}}"/>' +
         '</div>',
       scope: {
         imageSrc: '@',
@@ -29,6 +29,8 @@
         glassHeight: '='
       },
       link: function (scope, element) {
+
+        scope.imageSrc = scope.imageSrc || scope.src;
 
         var glass = element.find('div'),
           image = element.find('img'),
