@@ -11,11 +11,11 @@
       replace: true,
       template: '<div class="magnify-container" ng-style="getContainerStyle()">' +
                   '<div class="magnify-glass" ng-style="getGlassStyle()"></div>' +
-                  '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{ src }}" ng-srcset="{{ srcset }}" alt="{{ alt }}" title="{{ title }}"/>' +
+                  '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{ imageSrc }}" ng-srcset="{{ srcset }}" alt="{{ alt }}" title="{{ title }}"/>' +
                 '</div>',
       scope: {
-        ngSrc: '@',
-        ngSrcset: '@',
+        imageSrc: '@',
+        srcset: '@',
         alt: '@',
         title: '@',
         width: '=',
@@ -25,7 +25,10 @@
         glassWidth: '=',
         glassHeight: '='
       },
-      link: function (scope, element) {
+      link: function (scope, element, attrs) {
+
+        scope.imageSrc = scope.imageSrc || attrs.src || attrs.ngSrc;
+
         var glass = element.find('div'),
           image = element.find('img'),
           el, nWidth, nHeight, magnifyCSS;
@@ -69,7 +72,10 @@
               nWidth = img.width;
               nHeight = img.height;
             };
-            img.src = scope.src;
+
+            if (scope.imageSrc) {
+              img.src = scope.imageSrc;
+            }
           } else {
             // IE8 uses evt.x and evt.y
             mx = (evt.pageX) ? (evt.pageX - el.left) : evt.x;
@@ -118,11 +124,16 @@
         };
 
         scope.getGlassStyle = function () {
-          return {
-            background: 'url("' + scope.src + '") no-repeat',
-            width: (scope.glassWidth) ? scope.glassWidth + 'px' : '',
-            height: (scope.glassHeight) ? scope.glassHeight + 'px' : ''
-          };
+          if (scope.imageSrc) {
+            return {
+              background: 'url("' + scope.imageSrc + '") no-repeat',
+              width: (scope.glassWidth) ? scope.glassWidth + 'px' : '',
+              height: (scope.glassHeight) ? scope.glassHeight + 'px' : ''
+            };
+          }
+          else {
+            return {};
+          }
         };
       }
     };
