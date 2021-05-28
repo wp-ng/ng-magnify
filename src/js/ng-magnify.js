@@ -14,8 +14,8 @@
                   '<img class="magnify-image" width="{{width}}" height="{{height}}" ng-src="{{ src }}" ng-srcset="{{ srcset }}" alt="{{ alt }}" title="{{ title }}"/>' +
                 '</div>',
       scope: {
-        src: '@',
-        srcset: '@',
+        ngSrc: '@',
+        ngSrcset: '@',
         alt: '@',
         title: '@',
         width: '=',
@@ -69,7 +69,7 @@
               nWidth = img.width;
               nHeight = img.height;
             };
-            img.src = scope.imageSrc;
+            img.src = scope.src;
           } else {
             // IE8 uses evt.x and evt.y
             mx = (evt.pageX) ? (evt.pageX - el.left) : evt.x;
@@ -119,7 +119,7 @@
 
         scope.getGlassStyle = function () {
           return {
-            background: 'url("' + scope.imageSrc + '") no-repeat',
+            background: 'url("' + scope.src + '") no-repeat',
             width: (scope.glassWidth) ? scope.glassWidth + 'px' : '',
             height: (scope.glassHeight) ? scope.glassHeight + 'px' : ''
           };
